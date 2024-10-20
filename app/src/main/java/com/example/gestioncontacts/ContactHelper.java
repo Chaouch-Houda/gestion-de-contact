@@ -13,7 +13,11 @@ public class ContactHelper extends SQLiteOpenHelper {
     public static final String col_pseudo ="Pseudo";
     public static final String col_numero ="numero";
 
-    String requete = "create table "+table_contacts+" ("+ col_id + " Integer Primary Key Autoincrement,"+col_nom+ " Text not null,"+ col_pseudo+" Text not null,"+col_numero+" Text not null)";
+    String requete = "CREATE TABLE " + table_contacts + " ("
+            + col_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + col_nom + " TEXT NOT NULL, "
+            + col_pseudo + " TEXT NOT NULL, "
+            + col_numero + " TEXT NOT NULL)";
 
     public ContactHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -27,7 +31,7 @@ public class ContactHelper extends SQLiteOpenHelper {
     // MODIFICATION DE LA VERSION
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL("drop table "+table_contacts);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +table_contacts);
         onCreate(sqLiteDatabase);
     }
 }

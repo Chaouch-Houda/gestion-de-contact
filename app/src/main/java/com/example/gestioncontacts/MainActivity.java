@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 //            return insets;
 //        });
-        // Récuperation des composantes
+        // Récuperation des composants
         edmp=findViewById(R.id.ed_mp_auth);
         ednom=findViewById(R.id.ed_nom_auth);
         btnval = findViewById(R.id.btn_val_auth);
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nom = ednom.getText().toString();
                 String mp = edmp.getText().toString();
-                if(nom.equalsIgnoreCase("test") && mp.equals("000")) {
+                if(nom.equalsIgnoreCase("Houda") && mp.equals("000")) {
                     Intent i = new Intent(MainActivity.this,Accueil.class);
                     i.putExtra("USER",nom);
                     startActivity(i);
                 } else{
-                    Toast.makeText(MainActivity.this, "Les données saisies non valides", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Les données saisies sont non valides", Toast.LENGTH_SHORT).show();
                 }
             }
         });

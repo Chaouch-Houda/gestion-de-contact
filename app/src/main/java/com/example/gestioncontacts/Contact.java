@@ -1,14 +1,24 @@
 package com.example.gestioncontacts;
 
 public class Contact {
+    private int id;
     String nom;
     String pseudo ;
     String numero;
 
-    public Contact(String nom, String pseudo, String numero) {
+    public Contact(int id, String nom, String pseudo, String numero) {
+        this.id=id;
         this.nom = nom;
         this.pseudo = pseudo;
         this.numero = numero;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -38,7 +48,8 @@ public class Contact {
     @Override
     public String toString() {
         return "Contact{" +
-                "nom='" + nom + '\'' +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
                 ", pseudo='" + pseudo + '\'' +
                 ", numero='" + numero + '\'' +
                 '}';

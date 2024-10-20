@@ -19,7 +19,7 @@ public class Accueil extends AppCompatActivity {
     private TextView tvusername;
     private Button btnajout;
     private Button btnaff;
-    public static ArrayList<Contact> data = new ArrayList<Contact>();
+    //public static ArrayList<Contact> data = new ArrayList<Contact>(); // Cette ArrayList n'est plus nécessaire car nous utilisons désormais les données directement depuis la base de données.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +32,9 @@ public class Accueil extends AppCompatActivity {
             return insets;
         });
 
-        data.add(new Contact("Chaouch","Houda","1111"));
-        data.add(new Contact("Ch","Houda","1111"));
-        data.add(new Contact("Ch","Houda","2222"));
+        //        data.add(new Contact("Chaouch","Houda","1111"));
+        //        data.add(new Contact("Ch","Houda","1111"));
+        //        data.add(new Contact("Ch","Houda","2222"));
 
         tvusername = findViewById(R.id.tv_user_acc);
         btnajout = findViewById(R.id.btn_ajout_acc);
