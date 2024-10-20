@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColor"
+    android:orientation="vertical"
+    tools:context=".Ajout">
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/st_titre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="Ajout" />
+
+    <EditText
+        android:id="@+id/ed_nom_ajout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Nom"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/ed_pseudo_ajout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Pseudo"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/ed_tel_ajout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Numéro"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/btn_ajout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/btn1"
+        android:text="Ajouter"
+        android:textSize="16sp"
+        app:strokeColor="#767676"
+        app:strokeWidth="0.5dp" />
+
+    <Button
+        android:id="@+id/btn_qte_ajout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/btn"
+        android:text="Quitter"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+</LinearLayout>
