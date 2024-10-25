@@ -1,9 +1,11 @@
 package com.example.gestioncontacts;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,14 +14,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
-
 public class Accueil extends AppCompatActivity {
 
     private TextView tvusername;
-    private Button btnajout;
-    private Button btnaff;
+    private Button btnajout,btnaff;
+    private ImageButton btnLogout;
     //public static ArrayList<Contact> data = new ArrayList<Contact>(); // Cette ArrayList n'est plus nécessaire car nous utilisons désormais les données directement depuis la base de données.
+
+    private void logout() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isLoggedIn", false);
+        editor.apply();
+
+        // Rediriger vers Login (MainActivity) après la déconnexion
+        Intent intent = new Intent(Accueil.this, MainActivity.class);
+        startActivity(intent);
+        finish(); // Fermer AccueilActivity
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +51,7 @@ public class Accueil extends AppCompatActivity {
         tvusername = findViewById(R.id.tv_user_acc);
         btnajout = findViewById(R.id.btn_ajout_acc);
         btnaff = findViewById(R.id.btn_aff_acc);
+        btnLogout = findViewById(R.id.btn_logout);
 
         Intent x = this.getIntent();
         Bundle b = x.getExtras();
@@ -58,6 +71,13 @@ public class Accueil extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Accueil.this, Affichage.class);
                 startActivity(i);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
             }
         });
     }
