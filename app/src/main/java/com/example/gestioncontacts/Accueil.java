@@ -18,20 +18,9 @@ public class Accueil extends AppCompatActivity {
 
     private TextView tvusername;
     private Button btnajout,btnaff;
-    private ImageButton btnLogout;
     //public static ArrayList<Contact> data = new ArrayList<Contact>(); // Cette ArrayList n'est plus nécessaire car nous utilisons désormais les données directement depuis la base de données.
-
-    private void logout() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isLoggedIn", false);
-        editor.apply();
-
-        // Rediriger vers Login (MainActivity) après la déconnexion
-        Intent intent = new Intent(Accueil.this, MainActivity.class);
-        startActivity(intent);
-        finish(); // Fermer AccueilActivity
-    }
+    private ImageButton btnLogout;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +43,14 @@ public class Accueil extends AppCompatActivity {
         btnLogout = findViewById(R.id.btn_logout);
 
         Intent x = this.getIntent();
-        Bundle b = x.getExtras();
-        String u = b.getString("USER");
+        String u = x.getStringExtra("USER"); // Récupérer le nom d'utilisateur
+        if (u != null && !u.isEmpty()) {
+            tvusername.setText("Accueil de " + u);
+        } else {
+            tvusername.setText("Accueil de l'utilisateur inconnu");
+        }
 
-        tvusername.setText("Accueil de "+u);
+        //tvusername.setText("Accueil de "+u);
 
         btnajout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,10 +67,19 @@ public class Accueil extends AppCompatActivity {
             }
         });
 
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        // Listener pour le bouton de déconnexion
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logout();
+                // Réinitialiser la variable `connected`
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("connected", false);
+                editor.apply();
+
+                // Rediriger vers l'activité de connexion
+                startActivity(new Intent(Accueil.this, MainActivity.class));
+                finish();
             }
         });
     }
