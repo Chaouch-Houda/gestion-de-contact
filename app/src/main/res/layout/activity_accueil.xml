@@ -10,17 +10,33 @@
     android:orientation="vertical"
     tools:context=".Accueil">
 
-    <TextView
-        android:id="@+id/tv_user_acc"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="Accueil"
-        android:textAlignment="center"
-        android:textColor="@color/c2"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_user_acc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Accueil"
+            android:textAlignment="center"
+            android:textColor="@color/c2"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_logout"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#00EBE7E7"
+            app:srcCompat="@drawable/logout" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_ajout_acc"
@@ -52,13 +68,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="end"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            app:srcCompat="@drawable/baseline_logout_24" />
-    </LinearLayout>
+        android:orientation="vertical"/>
 </LinearLayout>
