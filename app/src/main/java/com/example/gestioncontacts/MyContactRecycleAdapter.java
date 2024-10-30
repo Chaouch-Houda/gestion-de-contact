@@ -1,8 +1,10 @@
 package com.example.gestioncontacts;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import android.Manifest;
 
 public class MyContactRecycleAdapter extends RecyclerView.Adapter<MyContactRecycleAdapter.MyViewHolder> {
     Context con;
@@ -89,9 +94,16 @@ public class MyContactRecycleAdapter extends RecyclerView.Adapter<MyContactRecyc
                     int indice = getAdapterPosition();
                     Contact c = data.get(indice);
 
-                    Intent i = new Intent(Intent.ACTION_DIAL);
-                    i.setData(Uri.parse("tel:"+c.numero));
-                    con.startActivity(i);
+                    // Intent i = new Intent(Intent.ACTION_DIAL); un appel en passant par le composeur
+                    // Vérifie si la permission CALL_PHONE est accordée
+                    if (ContextCompat.checkSelfPermission(con, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        // Demande la permission si elle n'est pas accordée
+                        ActivityCompat.requestPermissions((Activity) con, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                    }
+                        // Lance l'appel direct si la permission est accordée
+                        Intent i = new Intent(Intent.ACTION_CALL);
+                        i.setData(Uri.parse("tel:" + c.numero));
+                        con.startActivity(i);
                 }
             });
 

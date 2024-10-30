@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -23,7 +24,7 @@ public class Affichage extends AppCompatActivity {
 
     //private ListView lv;
     private RecyclerView rv;
-    private Button btnqte;
+    private ImageButton btnqte;
     private ArrayList<Contact> data;
     private SearchView searchView;
     private ArrayList<Contact> filteredData;

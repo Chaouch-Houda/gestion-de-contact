@@ -53,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:tint="@color/btn1"
             app:srcCompat="@drawable/baseline_call_24" />
 
         <ImageButton
@@ -67,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:tint="@color/btn"
             app:srcCompat="@drawable/baseline_delete_24" />
     </LinearLayout>
 
